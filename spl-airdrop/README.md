@@ -3,6 +3,32 @@
 
 이 레포지토리는 SPL(Solana Program Library) Token을 만들고 에어드랍해주는 간단한 예제 프로그램입니다,
 
+# Commands
+---
+
+### Build
+```bash
+anchor build
+```
+
+```bash
+anchor test
+```
+
+프로그램의 로직을 테스트하기 위해서 `anchor test` 명령어를 이용하여 테스트합니다.
+그러면 `tests` 폴더에 정의된 타입스크립트 기반의 테스트 코드가 실행됩니다.
+이 예제에서는 `create_mint` 함수와 `airdrop` 함수를 집중적으로 테스트합니다.
+프로그램(컨트랙트)가 의도대로 동작하는지 확인하기 위해서는 여러 케이스에 대한 테스트를 필수로 진행해야합니다.
+
+**테스트 전 주의해야할 사항**
+이 프로그램은 Solana의 Token Metadata Program과 같은 다른 프로그램을 이용합니다.
+솔라나 테스트넷이나 메인넷에는 이런 프로그램들이 이미 배포돼있지만, Anchor의 테스트 환경인 로컬넷에는 배포돼있지 않을 수 있습니다.
+따라서 `Anchor.toml`에 추가로 정의된 것 처럼 이런 프로그램들을 미리 정의해줍니다.
+```toml
+[[test.validator.clone]]
+address = "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+```
+
 # Flow
 ---
 
